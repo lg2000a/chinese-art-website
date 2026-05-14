@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品集 - 金墨境界</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>金墨境界</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="gallery.html" class="active">作品集</a></li>
+        <li><a href="about.html">关于我</a></li>
+        <li><a href="contact.html">联系我</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <div class="gallery-header">
+        <h2>精选作品</h2>
+        <p>以下是我的代表作品，展示了传统与现代艺术的融合探索。</p>
+      </div>
+
+      <!-- 分类筛选按钮 -->
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">全部作品</button>
+        <button class="filter-btn" data-filter="landscape">山水</button>
+        <button class="filter-btn" data-filter="flower">花鸟</button>
+        <button class="filter-btn" data-filter="style">古风</button>
+        <button class="filter-btn" data-filter="abstract">抽象</button>
+      </div>
+
+      <!-- 作品网格 -->
+      <div class="gallery-grid">
+        <!-- 作品1：山水意境 -->
+        <div class="gallery-item" data-category="landscape">
+          <div class="gallery-card">
+            <div class="image-wrapper">
+              <img src="images/mmexport1730980049418.jpg" alt="画作1：山水意境" class="gallery-image" loading="lazy">
+              <div class="image-overlay"></div>
+              <div class="loading-skeleton"></div>
+            </div>
+            <div class="gallery-info">
+              <h3>山水意境</h3>
+              <p class="category-tag">山水系列</p>
+              <p class="description">以传统笔墨技法诠释自然山水的深邃意境，追求意境之美。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 作品2：墨色花语 -->
+        <div class="gallery-item" data-category="flower">
+          <div class="gallery-card">
+            <div class="image-wrapper">
+              <img src="images/mmexport1730980057374.jpg" alt="画作2：墨色花语" class="gallery-image" loading="lazy">
+              <div class="image-overlay"></div>
+              <div class="loading-skeleton"></div>
+            </div>
+            <div class="gallery-info">
+              <h3>墨色花语</h3>
+              <p class="category-tag">花鸟系列</p>
+              <p class="description">用墨色的浓淡变化表现花卉的灵韵，诠释自然的生命力。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 作品3：古风雅韵 -->
+        <div class="gallery-item" data-category="style">
+          <div class="gallery-card">
+            <div class="image-wrapper">
+              <img src="images/mmexport1730980062646.jpg" alt="画作3：古风雅韵" class="gallery-image" loading="lazy">
+              <div class="image-overlay"></div>
+              <div class="loading-skeleton"></div>
+            </div>
+            <div class="gallery-info">
+              <h3>古风雅韵</h3>
+              <p class="category-tag">古风系列</p>
+              <p class="description">融合古典审美与现代设计理念，呈现独特的优雅风韵。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 作品4：抽象色彩 -->
+        <div class="gallery-item" data-category="abstract">
+          <div class="gallery-card">
+            <div class="image-wrapper">
+              <img src="images/mmexport1730980071299.jpg" alt="画作4：抽象色彩" class="gallery-image" loading="lazy">
+              <div class="image-overlay"></div>
+              <div class="loading-skeleton"></div>
+            </div>
+            <div class="gallery-info">
+              <h3>抽象色彩</h3>
+              <p class="category-tag">抽象系列</p>
+              <p class="description">打破传统形式，用色彩和笔触探索艺术的无限可能。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 没有结果提示 -->
+      <div class="no-results">
+        <p>未找到该分类的作品</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>版权所有 © 2026 金墨境界</p>
+  </footer>
+
+  <script>
+    // 分类筛选功能
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const noResults = document.querySelector('.no-results');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // 更新按钮状态
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // 筛选作品
+        let hasVisible = false;
+        galleryItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            item.classList.add('show');
+            item.classList.remove('hide');
+            hasVisible = true;
+          } else {
+            item.classList.add('hide');
+            item.classList.remove('show');
+          }
+        });
+
+        // 显示/隐藏"无结果"提示
+        noResults.style.display = hasVisible ? 'none' : 'block';
+      });
+    });
+
+    // 图片加载效果
+    const images = document.querySelectorAll('.gallery-image');
+    images.forEach(img => {
+      img.addEventListener('load', function() {
+        this.parentElement.querySelector('.loading-skeleton').style.display = 'none';
+        this.classList.add('loaded');
+      });
+
+      // 如果图片已缓存，直接触发加载完成
+      if (img.complete) {
+        img.parentElement.querySelector('.loading-skeleton').style.display = 'none';
+        img.classList.add('loaded');
+      }
+    });
+  </script>
+</body>
+</html>
