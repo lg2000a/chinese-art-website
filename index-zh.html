@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>金墨境界 — 中国书画</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1814;
+      --paper: #f5f1eb;
+      --paper-deep: #ede8df;
+      --vermillion: #c0392b;
+      --gold: #b8964a;
+      --mist: #8a8278;
+      --stroke: rgba(26,24,20,0.12);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Serif SC', 'Source Han Serif SC', STSong, serif;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.6rem 4rem;
+      background: rgba(245,241,235,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .nav-logo {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      color: var(--mist);
+      margin-top: 3px;
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+    .nav-lang {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--vermillion);
+      text-decoration: none;
+      border: 1px solid var(--vermillion);
+      padding: 0.35rem 0.85rem;
+      transition: all 0.3s;
+    }
+    .nav-lang:hover { background: var(--vermillion); color: white; }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 5rem 6rem 6rem;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      color: var(--vermillion);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.25;
+      letter-spacing: 0.12em;
+      margin-bottom: 2.5rem;
+      color: var(--ink);
+    }
+
+    .hero-title .accent { color: var(--gold); }
+
+    .hero-desc {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 2.2;
+      color: var(--mist);
+      max-width: 380px;
+      margin-bottom: 3.5rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: white;
+      background: var(--ink);
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover { background: var(--vermillion); }
+
+    .btn-ghost {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--mist);
+      text-decoration: none;
+      border-bottom: 1px solid var(--stroke);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper-deep);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.88;
+      display: block;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 6rem;
+      margin: 5rem 0 4rem;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--stroke); }
+    .divider-text {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.45em;
+      color: var(--mist);
+      white-space: nowrap;
+    }
+
+    .works { padding: 0 4rem 7rem; }
+
+    .works-intro {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+      padding: 0 2rem;
+    }
+
+    .works-intro-label {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.15em;
+    }
+
+    .works-intro-text {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 2.2;
+      color: var(--mist);
+      align-self: end;
+      letter-spacing: 0.06em;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper-deep);
+      cursor: pointer;
+    }
+
+    .work-item:first-child { grid-column: span 2; }
+
+    .work-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s;
+    }
+
+    .work-item:first-child .work-img { height: 420px; }
+    .work-item:hover .work-img { transform: scale(1.04); opacity: 0.82; }
+
+    .work-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.5rem 1.5rem;
+      background: linear-gradient(transparent, rgba(26,24,20,0.55));
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .work-item:hover .work-caption { transform: translateY(0); }
+
+    .work-caption h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: white;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.4rem;
+    }
+
+    .work-caption p {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .works-cta {
+      text-align: right;
+      margin-top: 2.5rem;
+      padding: 0 2rem;
+    }
+
+    .about-strip {
+      background: var(--ink);
+      color: var(--paper);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+
+    .about-left {
+      padding: 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-label {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .about-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 2.2;
+      color: rgba(245,241,235,0.6);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    .about-link {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,150,74,0.4);
+      padding-bottom: 3px;
+      align-self: flex-start;
+      transition: border-color 0.3s;
+    }
+    .about-link:hover { border-color: var(--gold); }
+
+    .about-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-left: 1px solid rgba(245,241,235,0.08);
+    }
+
+    .honor-item {
+      padding: 2.5rem;
+      border-bottom: 1px solid rgba(245,241,235,0.06);
+      border-right: 1px solid rgba(245,241,235,0.06);
+    }
+
+    .honor-item:nth-child(even) { border-right: none; }
+    .honor-item:nth-last-child(-n+2) { border-bottom: none; }
+
+    .honor-org {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .honor-role {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(245,241,235,0.8);
+      line-height: 1.6;
+      letter-spacing: 0.1em;
+    }
+
+    .contact-strip {
+      padding: 7rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-left p {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 2.2;
+      color: var(--mist);
+      letter-spacing: 0.06em;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .form-field label {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--mist);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.95rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--stroke);
+      padding: 0.7rem 0;
+      color: var(--ink);
+      transition: border-color 0.3s;
+      outline: none;
+      resize: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus { border-bottom-color: var(--ink); }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: var(--mist); }
+
+    .form-submit {
+      margin-top: 1rem;
+      align-self: flex-start;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: white;
+      background: var(--ink);
+      border: none;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .form-submit:hover { background: var(--vermillion); }
+
+    .form-note {
+      font-size: 0.82rem;
+      color: var(--mist);
+      font-style: italic;
+    }
+
+    footer {
+      border-top: 1px solid var(--stroke);
+      padding: 2rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--mist);
+    }
+
+    .footer-logo {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--mist);
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 8rem 2.5rem 4rem; }
+      .hero-right { height: 55vw; min-height: 300px; }
+      .divider { padding: 0 2.5rem; }
+      .works { padding: 0 2rem 5rem; }
+      .works-intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 0; }
+      .works-grid { grid-template-columns: 1fr 1fr; }
+      .work-item:first-child { grid-column: span 2; }
+      .about-strip { grid-template-columns: 1fr; }
+      .about-left { padding: 4rem 2.5rem; }
+      .about-right { grid-template-columns: 1fr 1fr; }
+      .contact-strip { grid-template-columns: 1fr; gap: 4rem; padding: 5rem 2.5rem; }
+      footer { padding: 1.5rem 2.5rem; flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-left { padding: 7rem 1.5rem 3rem; }
+      .works { padding: 0 1.5rem 4rem; }
+      .works-grid { grid-template-columns: 1fr; }
+      .work-item:first-child { grid-column: span 1; }
+      .work-img, .work-item:first-child .work-img { height: 260px; }
+      .about-left { padding: 3rem 1.5rem; }
+      .about-right { grid-template-columns: 1fr; }
+      .contact-strip { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.8s ease both; }
+    .hero-title { animation: fadeUp 0.8s 0.15s ease both; }
+    .hero-desc { animation: fadeUp 0.8s 0.28s ease both; }
+    .hero-actions { animation: fadeUp 0.8s 0.4s ease both; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index-zh.html">
+    金墨境界
+    <span>Jin Mo Realm · Chinese Art</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index-zh.html" class="active">首页</a></li>
+    <li><a href="gallery.html">作品集</a></li>
+    <li><a href="about.html">关于我</a></li>
+    <li><a href="contact.html">联系我</a></li>
+  </ul>
+  <a class="nav-lang" href="index-en.html">English</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">中国书画艺术</p>
+    <h1 class="hero-title">
+      笔墨<br>
+      <span class="accent">境界</span><br>
+      无尽处
+    </h1>
+    <p class="hero-desc">
+      传统与现代的艺术融合，用笔墨与色彩诠释生活的宁静与力量，让每一幅作品既有古典韵味，又富现代气息。
+    </p>
+    <div class="hero-actions">
+      <a href="gallery.html" class="btn-primary">查看作品集</a>
+      <a href="contact.html" class="btn-ghost">联系我</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="images/mmexport1730980049418.jpg" alt="金色扇面书法">
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">精选作品</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="works">
+  <div class="works-intro">
+    <h2 class="works-intro-label">扇面<br>书法系列</h2>
+    <p class="works-intro-text">
+      每一幅扇面作品，皆凝聚千年汉字之精髓。笔随心走，墨染纸香，古典意境与个人性灵在此交汇融合。
+    </p>
+  </div>
+
+  <div class="works-grid">
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980049418.jpg" alt="积善养德">
+      <div class="work-caption">
+        <h3>积善养德</h3>
+        <p>楷书 · 金色扇面</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="书写系列">
+      <div class="work-caption">
+        <h3>书写人生</h3>
+        <p>行书 · 青绿扇面</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980062646.jpg" alt="厚德载福">
+      <div class="work-caption">
+        <h3>厚德载福</h3>
+        <p>楷书 · 紫色扇面</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="银色扇面">
+      <div class="work-caption">
+        <h3>礼义勤俭和</h3>
+        <p>楷书 · 银色扇面</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="works-cta">
+    <a href="gallery.html" class="btn-ghost">查看完整作品集 →</a>
+  </div>
+</section>
+
+<section class="about-strip">
+  <div class="about-left">
+    <p class="about-label">艺术家简介</p>
+    <h2 class="about-title">连接传统<br>与当代</h2>
+    <p class="about-text">
+      从小深受山水画和水墨丹青的影响，坚持探索传统元素在当代语境中的新可能，让每一幅作品既有古典韵味，又富现代气息。
+    </p>
+    <a href="about.html" class="about-link">阅读完整简介</a>
+  </div>
+  <div class="about-right">
+    <div class="honor-item">
+      <p class="honor-org">国际名家书画院</p>
+      <p class="honor-role">副院长、教授</p>
+    </div>
+    <div class="honor-item">
+      <p class="honor-org">国际艺术研究院</p>
+      <p class="honor-role">理事</p>
+    </div>
+    <div class="honor-item">
+      <p class="honor-org">中国画家协会</p>
+      <p class="honor-role">理事</p>
+    </div>
+    <div class="honor-item">
+      <p class="honor-org">中国诗书画协会</p>
+      <p class="honor-role">研究员</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-strip">
+  <div class="contact-left">
+    <h2>欢迎<br>洽谈合作</h2>
+    <p>如有展览、收藏或创作合作等意向，欢迎与我联系，期待与您展开对话。</p>
+  </div>
+  <form class="contact-form" id="contactForm">
+    <div class="form-field">
+      <label>您的姓名</label>
+      <input type="text" name="name" placeholder="请输入您的姓名" required>
+    </div>
+    <div class="form-field">
+      <label>电子邮箱</label>
+      <input type="email" name="email" placeholder="your@email.com" required>
+    </div>
+    <div class="form-field">
+      <label>留言内容</label>
+      <textarea name="message" rows="4" placeholder="请输入您的留言或合作意向…" required></textarea>
+    </div>
+    <p class="form-note" id="formNote"></p>
+    <button type="submit" class="form-submit">发送消息</button>
+  </form>
+</section>
+
+<footer>
+  <span class="footer-copy">版权所有 © 2026 金墨境界</span>
+  <span class="footer-logo">金 墨 境 界</span>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = this.name.value.trim();
+    const email = this.email.value.trim();
+    const msg  = this.message.value.trim();
+    const to   = atob('YWxleDgyMDI2OEBnbWFpbC5jb20=');
+    const subject = encodeURIComponent('来自 ' + name + ' 的合作咨询 — 金墨境界');
+    const body    = encodeURIComponent('姓名：' + name + '\n邮箱：' + email + '\n\n' + msg);
+    window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+    document.getElementById('formNote').textContent = '正在打开邮件客户端…';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品集 — 金墨境界</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#1a1814;--paper:#f5f1eb;--paper-deep:#ede8df;--vermillion:#c0392b;--gold:#b8964a;--mist:#8a8278;--stroke:rgba(26,24,20,0.12);}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Noto Serif SC','Source Han Serif SC',STSong,serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 4rem;background:rgba(245,241,235,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--stroke);}
+    .nav-logo{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:300;letter-spacing:0.25em;color:var(--ink);text-decoration:none;}
+    .nav-logo span{display:block;font-family:'Noto Sans SC',sans-serif;font-size:0.6rem;letter-spacing:0.35em;color:var(--mist);margin-top:3px;font-weight:300;}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links a{font-family:'Noto Sans SC',sans-serif;font-size:0.8rem;font-weight:300;letter-spacing:0.15em;color:var(--mist);text-decoration:none;transition:color 0.3s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--ink);}
+    .nav-lang{font-family:'Noto Sans SC',sans-serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--vermillion);text-decoration:none;border:1px solid var(--vermillion);padding:0.35rem 0.85rem;transition:all 0.3s;}
+    .nav-lang:hover{background:var(--vermillion);color:white;}
+
+    .page-header{padding:10rem 6rem 4rem;}
+    .page-header-eyebrow{font-family:'Noto Sans SC',sans-serif;font-size:0.68rem;font-weight:300;letter-spacing:0.5em;color:var(--vermillion);margin-bottom:1.5rem;}
+    .page-header-title{font-family:'Noto Serif SC',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.25;letter-spacing:0.15em;margin-bottom:1.5rem;}
+    .page-header-desc{font-family:'Noto Sans SC',sans-serif;font-size:0.88rem;font-weight:300;line-height:2.2;color:var(--mist);max-width:480px;letter-spacing:0.06em;}
+
+    .divider{display:flex;align-items:center;gap:2rem;padding:0 6rem;margin:1rem 0 4rem;}
+    .divider-line{flex:1;height:1px;background:var(--stroke);}
+    .divider-text{font-family:'Noto Sans SC',sans-serif;font-size:0.68rem;font-weight:300;letter-spacing:0.45em;color:var(--mist);white-space:nowrap;}
+
+    .gallery{padding:0 4rem 8rem;}
+
+    .gallery-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:2px;margin-bottom:2px;}
+    .gallery-feature .work-item:first-child .work-img{height:560px;}
+
+    .work-item{position:relative;overflow:hidden;background:var(--paper-deep);cursor:pointer;}
+    .work-img{width:100%;height:340px;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s;}
+    .work-item:hover .work-img{transform:scale(1.04);opacity:0.82;}
+
+    .work-caption{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(26,24,20,0.62));transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .work-item:hover .work-caption{transform:translateY(0);}
+    .work-caption h3{font-family:'Noto Serif SC',serif;font-size:1.2rem;font-weight:400;color:white;letter-spacing:0.2em;margin-bottom:0.4rem;}
+    .work-caption p{font-family:'Noto Sans SC',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.65);}
+
+    .gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+
+    footer{border-top:1px solid var(--stroke);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;}
+    .footer-copy{font-family:'Noto Sans SC',sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.12em;color:var(--mist);}
+    .footer-logo{font-family:'Noto Serif SC',serif;font-size:0.9rem;font-weight:300;letter-spacing:0.3em;color:var(--mist);}
+
+    @media(max-width:900px){
+      nav{padding:1.2rem 2rem;}
+      .nav-links{gap:1.5rem;}
+      .page-header{padding:8rem 2.5rem 3rem;}
+      .divider,.gallery{padding-left:2rem;padding-right:2rem;}
+      .gallery-feature{grid-template-columns:1fr;}
+      .gallery-feature .work-item:first-child .work-img{height:340px;}
+      .gallery-row{grid-template-columns:1fr 1fr;}
+      footer{padding:1.5rem 2.5rem;flex-direction:column;gap:0.8rem;text-align:center;}
+    }
+    @media(max-width:600px){
+      .nav-links{display:none;}
+      .page-header{padding:7rem 1.5rem 2.5rem;}
+      .divider,.gallery{padding-left:1.5rem;padding-right:1.5rem;}
+      .gallery-row{grid-template-columns:1fr;}
+      footer{padding:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index-zh.html">金墨境界<span>Jin Mo Realm · Chinese Art</span></a>
+  <ul class="nav-links">
+    <li><a href="index-zh.html">首页</a></li>
+    <li><a href="gallery.html" class="active">作品集</a></li>
+    <li><a href="about.html">关于我</a></li>
+    <li><a href="contact.html">联系我</a></li>
+  </ul>
+  <a class="nav-lang" href="gallery-en.html">English</a>
+</nav>
+
+<div class="page-header">
+  <p class="page-header-eyebrow">精选作品</p>
+  <h1 class="page-header-title">扇面<br>书法</h1>
+  <p class="page-header-desc">每一幅扇面，皆是笔墨与心境的对话。字随心走，墨染纸香，古典意境与个人性灵在此交汇。</p>
+</div>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">书法系列</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="gallery">
+  <div class="gallery-feature">
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980049418.jpg" alt="积善养德">
+      <div class="work-caption">
+        <h3>积善养德</h3>
+        <p>楷书 · 金色扇面</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="书写人生">
+      <div class="work-caption">
+        <h3>书写人生</h3>
+        <p>行书 · 青绿扇面</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-row">
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980062646.jpg" alt="厚德载福">
+      <div class="work-caption">
+        <h3>厚德载福</h3>
+        <p>楷书 · 紫色扇面</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="礼义勤俭和">
+      <div class="work-caption">
+        <h3>礼义勤俭和</h3>
+        <p>楷书 · 银色扇面</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/IMG_20240610_110228_1.jpg" alt="自然写生">
+      <div class="work-caption">
+        <h3>自然写生</h3>
+        <p>摄影 · 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">版权所有 © 2026 金墨境界</span>
+  <span class="footer-logo">金 墨 境 界</span>
+</footer>
+</body>
+</html>
