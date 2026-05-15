@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jin Mo Realm — Chinese Calligraphy & Painting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1814;
+      --paper: #f5f1eb;
+      --paper-deep: #ede8df;
+      --vermillion: #c0392b;
+      --gold: #b8964a;
+      --mist: #8a8278;
+      --stroke: rgba(26,24,20,0.12);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.6rem 4rem;
+      background: rgba(245,241,235,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+    .nav-lang {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      text-decoration: none;
+      border: 1px solid var(--vermillion);
+      padding: 0.35rem 0.85rem;
+      transition: all 0.3s;
+    }
+    .nav-lang:hover {
+      background: var(--vermillion);
+      color: white;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 5rem 6rem 6rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--mist);
+      max-width: 420px;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: white;
+      background: var(--ink);
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover { background: var(--vermillion); }
+
+    .btn-ghost {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mist);
+      text-decoration: none;
+      border-bottom: 1px solid var(--stroke);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper-deep);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.88;
+      display: block;
+    }
+
+    .hero-seal {
+      position: absolute;
+      bottom: 3rem;
+      right: 3rem;
+      width: 72px;
+      height: 72px;
+      border: 2px solid var(--vermillion);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-seal-inner {
+      width: 50px;
+      height: 50px;
+      background: var(--vermillion);
+      opacity: 0.85;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 6rem;
+      margin: 5rem 0 4rem;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--stroke); }
+    .divider-text {
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--mist);
+      white-space: nowrap;
+    }
+
+    /* ── WORKS SECTION ── */
+    .works {
+      padding: 0 4rem 7rem;
+    }
+
+    .works-intro {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+      padding: 0 2rem;
+    }
+
+    .works-intro-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .works-intro-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--mist);
+      align-self: end;
+      max-width: 560px;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper-deep);
+      cursor: pointer;
+    }
+
+    .work-item:first-child {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .work-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s;
+    }
+
+    .work-item:first-child .work-img { height: 420px; }
+
+    .work-item:hover .work-img {
+      transform: scale(1.04);
+      opacity: 0.82;
+    }
+
+    .work-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.5rem 1.5rem;
+      background: linear-gradient(transparent, rgba(26,24,20,0.55));
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .work-item:hover .work-caption { transform: translateY(0); }
+
+    .work-caption h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 0.3rem;
+    }
+
+    .work-caption p {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .works-cta {
+      text-align: right;
+      margin-top: 2.5rem;
+      padding: 0 2rem;
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      background: var(--ink);
+      color: var(--paper);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+      margin: 0;
+    }
+
+    .about-left {
+      padding: 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .about-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(245,241,235,0.65);
+      margin-bottom: 2.5rem;
+      max-width: 440px;
+    }
+
+    .about-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,150,74,0.4);
+      padding-bottom: 3px;
+      transition: border-color 0.3s;
+      align-self: flex-start;
+    }
+    .about-link:hover { border-color: var(--gold); }
+
+    .about-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-left: 1px solid rgba(245,241,235,0.08);
+    }
+
+    .honor-item {
+      padding: 2.5rem;
+      border-bottom: 1px solid rgba(245,241,235,0.06);
+      border-right: 1px solid rgba(245,241,235,0.06);
+    }
+
+    .honor-item:nth-child(even) { border-right: none; }
+    .honor-item:nth-last-child(-n+2) { border-bottom: none; }
+
+    .honor-org {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .honor-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: rgba(245,241,235,0.82);
+      line-height: 1.4;
+    }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      padding: 7rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-left p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--mist);
+      max-width: 380px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-field label {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--stroke);
+      padding: 0.7rem 0;
+      color: var(--ink);
+      transition: border-color 0.3s;
+      outline: none;
+      resize: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-bottom-color: var(--ink);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: var(--mist); font-style: italic; }
+
+    .form-submit {
+      margin-top: 1rem;
+      align-self: flex-start;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: white;
+      background: var(--ink);
+      border: none;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .form-submit:hover { background: var(--vermillion); }
+
+    .form-note {
+      font-size: 0.82rem;
+      color: var(--mist);
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--stroke);
+      padding: 2rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--mist);
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--mist);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { gap: 1.5rem; }
+      
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 8rem 2.5rem 4rem; }
+      .hero-right { height: 55vw; min-height: 300px; }
+
+      .divider { padding: 0 2.5rem; }
+      .works { padding: 0 2rem 5rem; }
+      .works-intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 0; }
+      .works-grid { grid-template-columns: 1fr 1fr; }
+      .work-item:first-child { grid-column: span 2; }
+
+      .about-strip { grid-template-columns: 1fr; }
+      .about-left { padding: 4rem 2.5rem; }
+      .about-right { grid-template-columns: 1fr 1fr; }
+
+      .contact-strip { grid-template-columns: 1fr; gap: 4rem; padding: 5rem 2.5rem; }
+      footer { padding: 1.5rem 2.5rem; flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-left { padding: 7rem 1.5rem 3rem; }
+      .works { padding: 0 1.5rem 4rem; }
+      .works-grid { grid-template-columns: 1fr; }
+      .work-item:first-child { grid-column: span 1; }
+      .work-img, .work-item:first-child .work-img { height: 260px; }
+      .about-left { padding: 3rem 1.5rem; }
+      .about-right { grid-template-columns: 1fr; }
+      .contact-strip { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; }
+    }
+
+    /* ── LOAD ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.8s ease both; }
+    .hero-title { animation: fadeUp 0.8s 0.15s ease both; }
+    .hero-desc { animation: fadeUp 0.8s 0.28s ease both; }
+    .hero-actions { animation: fadeUp 0.8s 0.4s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index-en.html">
+    Jin Mo Realm
+    <span>金 墨 境 界</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index-en.html" class="active">Home</a></li>
+    <li><a href="gallery-en.html">Works</a></li>
+    <li><a href="about-en.html">About</a></li>
+    <li><a href="contact-en.html">Contact</a></li>
+  </ul>
+  <a class="nav-lang" href="index-zh.html">中文</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Chinese Calligraphy &amp; Painting</p>
+    <h1 class="hero-title">
+      Ink meets<br>
+      <em>eternity</em><br>
+      on paper
+    </h1>
+    <p class="hero-desc">
+      Where ancient brushwork converges with contemporary sensibility — 
+      each stroke a meditation, each composition a world.
+    </p>
+    <div class="hero-actions">
+      <a href="gallery-en.html" class="btn-primary">View Works</a>
+      <a href="contact-en.html" class="btn-ghost">Inquire</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="images/mmexport1730980049418.jpg" alt="Calligraphy on golden fan">
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">Selected Works</span>
+  <div class="divider-line"></div>
+</div>
+
+<!-- WORKS -->
+<section class="works">
+  <div class="works-intro">
+    <h2 class="works-intro-label">Fan-shaped<br>Calligraphy</h2>
+    <p class="works-intro-text">
+      Each fan-shaped piece captures the essence of classical Chinese characters — 
+      a tradition stretching back millennia, rendered with personal expression 
+      and contemporary spirit.
+    </p>
+  </div>
+
+  <div class="works-grid">
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980049418.jpg" alt="Accumulate Goodness">
+      <div class="work-caption">
+        <h3>Accumulate Goodness — Golden Fan</h3>
+        <p>Regular Script · Gold Paper</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="Calligraphy on jade fan">
+      <div class="work-caption">
+        <h3>Jade Fan Series</h3>
+        <p>Running Script · Celadon Paper</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980062646.jpg" alt="Virtue Carries Fortune">
+      <div class="work-caption">
+        <h3>Virtue Carries Fortune</h3>
+        <p>Regular Script · Lavender Paper</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="Silver Fan">
+      <div class="work-caption">
+        <h3>Rites &amp; Virtue</h3>
+        <p>Regular Script · Silver Paper</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="works-cta">
+    <a href="gallery-en.html" class="btn-ghost">View complete gallery →</a>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-left">
+    <p class="about-label">About the Artist</p>
+    <h2 class="about-title">Bridging tradition<br>and the present</h2>
+    <p class="about-text">
+      Deeply rooted in the classical landscape of Chinese ink painting and calligraphy, 
+      the artist explores new possibilities where heritage and contemporary vision meet — 
+      every work carrying both ancient resonance and living breath.
+    </p>
+    <a href="about-en.html" class="about-link">Full biography</a>
+  </div>
+  <div class="about-right">
+    <div class="honor-item">
+      <p class="honor-org">International Academy of Masters</p>
+      <p class="honor-role">Vice President &amp; Professor</p>
+    </div>
+    <div class="honor-item">
+      <p class="honor-org">International Art Research Institute</p>
+      <p class="honor-role">Council Member</p>
+    </div>
+    <div class="honor-item">
+      <p class="honor-org">China Painters Association</p>
+      <p class="honor-role">Council Member</p>
+    </div>
+    <div class="honor-item">
+      <p class="honor-org">China Poetry, Calligraphy &amp; Painting Society</p>
+      <p class="honor-role">Senior Researcher</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-strip">
+  <div class="contact-left">
+    <h2>Open for<br>inquiries &amp;<br>collaboration</h2>
+    <p>
+      Whether for an exhibition, acquisition, or creative collaboration — 
+      reach out and let us begin a conversation.
+    </p>
+  </div>
+  <form class="contact-form" id="contactForm">
+    <div class="form-field">
+      <label>Your Name</label>
+      <input type="text" name="name" placeholder="Full name" required>
+    </div>
+    <div class="form-field">
+      <label>Email Address</label>
+      <input type="email" name="email" placeholder="your@email.com" required>
+    </div>
+    <div class="form-field">
+      <label>Message</label>
+      <textarea name="message" rows="4" placeholder="Your inquiry or message…" required></textarea>
+    </div>
+    <p class="form-note" id="formNote"></p>
+    <button type="submit" class="form-submit">Send Message</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 Jin Mo Realm. All rights reserved.</span>
+  <span class="footer-logo">金 墨 境 界</span>
+</footer>
+
+<script>
+  // Email form via mailto — keeps address hidden from page display
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = this.name.value.trim();
+    const email = this.email.value.trim();
+    const msg  = this.message.value.trim();
+    const to   = atob('YWxleDgyMDI2OEBnbWFpbC5jb20=');
+    const subject = encodeURIComponent('Inquiry from ' + name + ' — Jin Mo Realm');
+    const body    = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg);
+    window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+    document.getElementById('formNote').textContent = 'Opening your mail client…';
+  });
+</script>
+</body>
+</html>
