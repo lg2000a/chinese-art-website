@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>作品集 — 金墨境界</title>
+  <meta name="description" content="金墨境界作品集：中国画、书法系列全览。包含花鸟画、楷书、行书等多种题材，展示传统书画艺术之美。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
   <style>
@@ -25,14 +26,25 @@
     .page-header-title{font-family:'Noto Serif SC',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.25;letter-spacing:0.15em;margin-bottom:1.5rem;}
     .page-header-desc{font-family:'Noto Sans SC',sans-serif;font-size:0.88rem;font-weight:300;line-height:2.2;color:var(--mist);max-width:480px;letter-spacing:0.06em;}
 
-    .divider{display:flex;align-items:center;gap:2rem;padding:0 6rem;margin:1rem 0 4rem;}
+    .divider{display:flex;align-items:center;gap:2rem;padding:0 6rem;margin:2rem 0 4rem;}
     .divider-line{flex:1;height:1px;background:var(--stroke);}
     .divider-text{font-family:'Noto Sans SC',sans-serif;font-size:0.68rem;font-weight:300;letter-spacing:0.45em;color:var(--mist);white-space:nowrap;}
 
     .gallery{padding:0 4rem 8rem;}
 
+    /* 中国画专辑：featured大图 + 描述卡 */
+    .gallery-painting{display:grid;grid-template-columns:1.5fr 1fr;gap:2px;margin-bottom:2px;}
+    .gallery-painting .work-item .work-img{height:520px;}
+    .painting-desc-card{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:4rem;background:var(--paper-deep);}
+    .painting-desc-card .card-eyebrow{font-family:'Noto Sans SC',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.45em;color:var(--vermillion);margin-bottom:1.5rem;}
+    .painting-desc-card .card-title{font-family:'Noto Serif SC',serif;font-size:2.2rem;font-weight:300;letter-spacing:0.2em;color:var(--ink);margin-bottom:1.5rem;line-height:1.4;}
+    .painting-desc-card .card-text{font-family:'Noto Sans SC',sans-serif;font-size:0.82rem;font-weight:300;line-height:2.4;color:var(--mist);letter-spacing:0.06em;}
+
+    /* 书法系列：feature+row布局 */
     .gallery-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:2px;margin-bottom:2px;}
-    .gallery-feature .work-item:first-child .work-img{height:560px;}
+    .gallery-feature .work-item:first-child .work-img{height:500px;}
+    .gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;}
+    .gallery-row-2{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 
     .work-item{position:relative;overflow:hidden;background:var(--paper-deep);cursor:pointer;}
     .work-img{width:100%;height:340px;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s;}
@@ -40,10 +52,8 @@
 
     .work-caption{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(26,24,20,0.62));transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     .work-item:hover .work-caption{transform:translateY(0);}
-    .work-caption h3{font-family:'Noto Serif SC',serif;font-size:1.2rem;font-weight:400;color:white;letter-spacing:0.2em;margin-bottom:0.4rem;}
+    .work-caption h3{font-family:'Noto Serif SC',serif;font-size:1.15rem;font-weight:400;color:white;letter-spacing:0.2em;margin-bottom:0.4rem;line-height:1.5;}
     .work-caption p{font-family:'Noto Sans SC',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.65);}
-
-    .gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 
     footer{border-top:1px solid var(--stroke);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;}
     .footer-copy{font-family:'Noto Sans SC',sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.12em;color:var(--mist);}
@@ -54,16 +64,19 @@
       .nav-links{gap:1.5rem;}
       .page-header{padding:8rem 2.5rem 3rem;}
       .divider,.gallery{padding-left:2rem;padding-right:2rem;}
+      .gallery-painting{grid-template-columns:1fr;}
+      .gallery-painting .work-item .work-img{height:340px;}
       .gallery-feature{grid-template-columns:1fr;}
       .gallery-feature .work-item:first-child .work-img{height:340px;}
-      .gallery-row{grid-template-columns:1fr 1fr;}
+      .gallery-row,.gallery-row-2{grid-template-columns:1fr 1fr;}
       footer{padding:1.5rem 2.5rem;flex-direction:column;gap:0.8rem;text-align:center;}
     }
     @media(max-width:600px){
       .nav-links{display:none;}
       .page-header{padding:7rem 1.5rem 2.5rem;}
       .divider,.gallery{padding-left:1.5rem;padding-right:1.5rem;}
-      .gallery-row{grid-template-columns:1fr;}
+      .gallery-row,.gallery-row-2{grid-template-columns:1fr;}
+      .painting-desc-card{padding:2.5rem 1.5rem;}
       footer{padding:1.5rem;}
     }
   </style>
@@ -82,57 +95,118 @@
 
 <div class="page-header">
   <p class="page-header-eyebrow">精选作品</p>
-  <h1 class="page-header-title">扇面<br>书法</h1>
-  <p class="page-header-desc">每一幅扇面，皆是笔墨与心境的对话。字随心走，墨染纸香，古典意境与个人性灵在此交汇。</p>
+  <h1 class="page-header-title">作品<br>全览</h1>
+  <p class="page-header-desc">中国画与书法系列，笔墨之间承载传统与当代的交汇，每一幅作品皆是心境与文化的凝练表达。</p>
 </div>
 
+<!-- 中国画专辑 -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">中国画专辑</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="gallery">
+  <div class="gallery-painting">
+    <div class="work-item">
+      <img class="work-img" src="images/绘画作品1-1.jpg" alt="志存高远">
+      <div class="work-caption">
+        <h3>志存高远</h3>
+        <p>中国画 · 花鸟</p>
+      </div>
+    </div>
+    <div class="painting-desc-card">
+      <p class="card-eyebrow">中国画 · 花鸟</p>
+      <p class="card-title">志存高远</p>
+      <p class="card-text">注重"形"的神似与"意"的神韵完美结合，以鹰寄情，以鹰抒情。色彩上辅以淡彩或重彩，使画面既有传统水墨韵味，又不失现代生动感。通过鹰与石的对比呼应，展现坚韧不拔、勇往直前的精神。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 书法系列 -->
 <div class="divider">
   <div class="divider-line"></div>
   <span class="divider-text">书法系列</span>
   <div class="divider-line"></div>
 </div>
 
-<section class="gallery">
+<section class="gallery" style="padding-top:0;">
+
+  <!-- 对联大图 -->
   <div class="gallery-feature">
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980049418.jpg" alt="积善养德">
+      <img class="work-img" src="images/书法作品2-1.jpg" alt="天布祥和新景祥，地开鸿运耕康庄">
       <div class="work-caption">
-        <h3>积善养德</h3>
-        <p>楷书 · 金色扇面</p>
+        <h3>天布祥和新景祥，地开鸿运耕康庄</h3>
+        <p>书法 · 对联</p>
       </div>
     </div>
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="书写人生">
+      <img class="work-img" src="images/书法2-4.jpg" alt="福禄寿喜">
       <div class="work-caption">
-        <h3>书写人生</h3>
-        <p>行书 · 青绿扇面</p>
+        <h3>福禄寿喜</h3>
+        <p>书法 · 吉祥题材</p>
       </div>
     </div>
   </div>
 
+  <!-- 扇面三件 -->
   <div class="gallery-row">
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980049418.jpg" alt="积善养德">
+      <div class="work-caption">
+        <h3>积善养德</h3>
+        <p>书法 · 金色扇面</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="书为至宝">
+      <div class="work-caption">
+        <h3>书为至宝</h3>
+        <p>书法 · 青绿扇面</p>
+      </div>
+    </div>
     <div class="work-item">
       <img class="work-img" src="images/mmexport1730980062646.jpg" alt="厚德载福">
       <div class="work-caption">
         <h3>厚德载福</h3>
-        <p>楷书 · 紫色扇面</p>
-      </div>
-    </div>
-    <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="礼义勤俭和">
-      <div class="work-caption">
-        <h3>礼义勤俭和</h3>
-        <p>楷书 · 银色扇面</p>
-      </div>
-    </div>
-    <div class="work-item">
-      <img class="work-img" src="images/IMG_20240610_110228_1.jpg" alt="自然写生">
-      <div class="work-caption">
-        <h3>自然写生</h3>
-        <p>摄影 · 2024</p>
+        <p>书法 · 紫色扇面</p>
       </div>
     </div>
   </div>
+
+  <!-- 其余四件 -->
+  <div class="gallery-row-2">
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-2.jpg" alt="花香庭草绿，书雅画堂幽">
+      <div class="work-caption">
+        <h3>花香庭草绿，书雅画堂幽</h3>
+        <p>书法 · 条幅</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-3.jpg" alt="佛·与佛有缘真福也">
+      <div class="work-caption">
+        <h3>佛 · 与佛有缘真福也</h3>
+        <p>书法 · 禅意题材</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-5.jpg" alt="佛光普照">
+      <div class="work-caption">
+        <h3>佛光普照</h3>
+        <p>书法 · 禅意题材</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="孝当先礼为上勤为本俭养德和为贵">
+      <div class="work-caption">
+        <h3>孝 · 礼 · 勤 · 俭 · 和</h3>
+        <p>书法 · 银色扇面</p>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <footer>
