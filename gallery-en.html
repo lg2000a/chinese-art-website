@@ -4,14 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Works — Jin Mo Realm</title>
+  <meta name="description" content="Full gallery of Jin Mo Realm — Chinese painting and calligraphy series including bird-and-flower ink painting, classical brushwork scrolls, fan-shaped calligraphy, and Zen-inspired works.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --ink:#1a1814; --paper:#f5f1eb; --paper-deep:#ede8df;
-      --vermillion:#c0392b; --gold:#b8964a; --mist:#8a8278;
-      --stroke:rgba(26,24,20,0.12);
-    }
+    :root{--ink:#1a1814;--paper:#f5f1eb;--paper-deep:#ede8df;--vermillion:#c0392b;--gold:#b8964a;--mist:#8a8278;--stroke:rgba(26,24,20,0.12);}
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'EB Garamond',Georgia,serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
 
@@ -25,19 +22,27 @@
     .nav-lang:hover{background:var(--vermillion);color:white;}
 
     .page-header{padding:10rem 6rem 4rem;}
-    .page-header-eyebrow{font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--vermillion);margin-bottom:1.5rem;}
-    .page-header-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem;}
-    .page-header-desc{font-size:1rem;line-height:1.9;color:var(--mist);max-width:520px;}
+    .page-header-eyebrow{font-size:0.68rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--vermillion);margin-bottom:1.5rem;}
+    .page-header-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem;}
+    .page-header-desc{font-size:1rem;line-height:1.9;color:var(--mist);max-width:480px;}
 
-    .divider{display:flex;align-items:center;gap:2rem;padding:0 6rem;margin:1rem 0 4rem;}
+    .divider{display:flex;align-items:center;gap:2rem;padding:0 6rem;margin:2rem 0 4rem;}
     .divider-line{flex:1;height:1px;background:var(--stroke);}
     .divider-text{font-size:0.68rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--mist);white-space:nowrap;}
 
     .gallery{padding:0 4rem 8rem;}
 
-    /* Featured large piece */
+    .gallery-painting{display:grid;grid-template-columns:1.5fr 1fr;gap:2px;margin-bottom:2px;}
+    .gallery-painting .work-item .work-img{height:520px;}
+    .painting-desc-card{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:4rem;background:var(--paper-deep);}
+    .painting-desc-card .card-eyebrow{font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--vermillion);margin-bottom:1.5rem;}
+    .painting-desc-card .card-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;font-style:italic;color:var(--ink);margin-bottom:1.5rem;line-height:1.2;}
+    .painting-desc-card .card-text{font-size:0.98rem;line-height:1.9;color:var(--mist);max-width:320px;}
+
     .gallery-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:2px;margin-bottom:2px;}
-    .gallery-feature .work-item:first-child .work-img{height:560px;}
+    .gallery-feature .work-item:first-child .work-img{height:500px;}
+    .gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;}
+    .gallery-row-2{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 
     .work-item{position:relative;overflow:hidden;background:var(--paper-deep);cursor:pointer;}
     .work-img{width:100%;height:340px;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s;}
@@ -45,10 +50,8 @@
 
     .work-caption{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(26,24,20,0.62));transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     .work-item:hover .work-caption{transform:translateY(0);}
-    .work-caption h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:white;margin-bottom:0.3rem;}
-    .work-caption p{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);}
-
-    .gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+    .work-caption h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:white;letter-spacing:0.04em;margin-bottom:0.4rem;line-height:1.4;}
+    .work-caption p{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.62);}
 
     footer{border-top:1px solid var(--stroke);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;}
     .footer-copy{font-size:0.75rem;letter-spacing:0.12em;color:var(--mist);}
@@ -59,16 +62,19 @@
       .nav-links{gap:1.5rem;}
       .page-header{padding:8rem 2.5rem 3rem;}
       .divider,.gallery{padding-left:2rem;padding-right:2rem;}
+      .gallery-painting{grid-template-columns:1fr;}
+      .gallery-painting .work-item .work-img{height:340px;}
       .gallery-feature{grid-template-columns:1fr;}
       .gallery-feature .work-item:first-child .work-img{height:340px;}
-      .gallery-row{grid-template-columns:1fr 1fr;}
+      .gallery-row,.gallery-row-2{grid-template-columns:1fr 1fr;}
       footer{padding:1.5rem 2.5rem;flex-direction:column;gap:0.8rem;text-align:center;}
     }
     @media(max-width:600px){
       .nav-links{display:none;}
       .page-header{padding:7rem 1.5rem 2.5rem;}
       .divider,.gallery{padding-left:1.5rem;padding-right:1.5rem;}
-      .gallery-row{grid-template-columns:1fr;}
+      .gallery-row,.gallery-row-2{grid-template-columns:1fr;}
+      .painting-desc-card{padding:2.5rem 1.5rem;}
       footer{padding:1.5rem;}
     }
   </style>
@@ -86,58 +92,116 @@
 </nav>
 
 <div class="page-header">
-  <p class="page-header-eyebrow">Gallery</p>
-  <h1 class="page-header-title">Fan-shaped<br><em>Calligraphy</em></h1>
-  <p class="page-header-desc">A selection of works on traditional fan-shaped paper — each character an act of presence, each composition a meditation on virtue and beauty.</p>
+  <p class="page-header-eyebrow">Selected Works</p>
+  <h1 class="page-header-title">Complete<br>Gallery</h1>
+  <p class="page-header-desc">Chinese painting and calligraphy series — where classical brushwork and contemporary spirit converge in every stroke.</p>
 </div>
 
+<!-- CHINESE PAINTING -->
 <div class="divider">
   <div class="divider-line"></div>
-  <span class="divider-text">Selected Works</span>
+  <span class="divider-text">Chinese Painting</span>
   <div class="divider-line"></div>
 </div>
 
 <section class="gallery">
+  <div class="gallery-painting">
+    <div class="work-item">
+      <img class="work-img" src="images/绘画作品1-1.jpg" alt="Soaring Ambition">
+      <div class="work-caption">
+        <h3>Soaring Ambition</h3>
+        <p>Chinese Painting · Bird &amp; Flower</p>
+      </div>
+    </div>
+    <div class="painting-desc-card">
+      <p class="card-eyebrow">Chinese Painting · Bird &amp; Flower</p>
+      <p class="card-title">Soaring Ambition</p>
+      <p class="card-text">This painting emphasizes the harmony between visual likeness and spiritual expression. Through the image of the eagle, the artist conveys aspiration, strength, and emotion. The contrast between the eagle and the rock reflects resilience, determination, and the courage to move forward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALLIGRAPHY -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">Calligraphy Series</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="gallery" style="padding-top:0;">
+
   <div class="gallery-feature">
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980049418.jpg" alt="Accumulate Goodness">
+      <img class="work-img" src="images/书法作品2-1.jpg" alt="Heaven Spreads Harmony">
       <div class="work-caption">
-        <h3>Accumulate Goodness, Cultivate Virtue</h3>
-        <p>Regular Script · Gold Fan Paper</p>
+        <h3>Heaven Spreads Harmony · Earth Opens Fortune</h3>
+        <p>Calligraphy · Couplet</p>
       </div>
     </div>
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="Jade Fan">
+      <img class="work-img" src="images/书法2-4.jpg" alt="Blessing, Prosperity, Longevity and Joy">
       <div class="work-caption">
-        <h3>Writing Life</h3>
-        <p>Running Script · Celadon Fan Paper</p>
+        <h3>Blessing, Prosperity, Longevity &amp; Joy</h3>
+        <p>Calligraphy · Auspicious</p>
       </div>
     </div>
   </div>
 
   <div class="gallery-row">
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980062646.jpg" alt="Virtue Carries Fortune">
+      <img class="work-img" src="images/mmexport1730980049418.jpg" alt="Cultivating Virtue Through Good Deeds">
       <div class="work-caption">
-        <h3>Virtue Carries Fortune</h3>
-        <p>Regular Script · Lavender Fan Paper</p>
+        <h3>Cultivating Virtue Through Good Deeds</h3>
+        <p>Calligraphy · Golden Fan</p>
       </div>
     </div>
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="Rites and Virtue">
+      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="Books Are Treasures">
       <div class="work-caption">
-        <h3>Rites, Diligence &amp; Harmony</h3>
-        <p>Regular Script · Silver Fan Paper</p>
+        <h3>Books Are Treasures</h3>
+        <p>Calligraphy · Celadon Fan</p>
       </div>
     </div>
     <div class="work-item">
-      <img class="work-img" src="images/IMG_20240610_110228_1.jpg" alt="Nature Study">
+      <img class="work-img" src="images/mmexport1730980062646.jpg" alt="Great Virtue Brings Blessings">
       <div class="work-caption">
-        <h3>Nature Study</h3>
-        <p>Photography · 2024</p>
+        <h3>Great Virtue Brings Blessings</h3>
+        <p>Calligraphy · Lavender Fan</p>
       </div>
     </div>
   </div>
+
+  <div class="gallery-row-2">
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-2.jpg" alt="Fragrant Flowers and Quiet Art Hall">
+      <div class="work-caption">
+        <h3>Fragrant Flowers &amp; Quiet Art Hall</h3>
+        <p>Calligraphy · Scroll</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-3.jpg" alt="A True Blessing — Affinity with Buddha">
+      <div class="work-caption">
+        <h3>A True Blessing — Affinity with Buddha</h3>
+        <p>Calligraphy · Zen</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-5.jpg" alt="Buddha's Light Shines Everywhere">
+      <div class="work-caption">
+        <h3>Buddha's Light Shines Everywhere</h3>
+        <p>Calligraphy · Zen</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="Filial Piety, Courtesy, Diligence, Frugality, Harmony">
+      <div class="work-caption">
+        <h3>Filial Piety · Courtesy · Diligence · Frugality · Harmony</h3>
+        <p>Calligraphy · Silver Fan</p>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <footer>
