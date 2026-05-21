@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>金墨境界 — 中国书画</title>
+  <title>金墨境界 — 中国书画艺术</title>
+  <meta name="description" content="金墨境界，融合传统与现代的中国书画艺术。展示书法、中国画等精选作品，探索笔墨之美与文化传承。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
   <style>
@@ -48,7 +49,6 @@
       color: var(--ink);
       text-decoration: none;
     }
-
     .nav-logo span {
       display: block;
       font-family: 'Noto Sans SC', sans-serif;
@@ -65,7 +65,6 @@
       list-style: none;
       align-items: center;
     }
-
     .nav-links a {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.8rem;
@@ -75,7 +74,6 @@
       text-decoration: none;
       transition: color 0.3s;
     }
-
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
     .nav-lang {
@@ -96,14 +94,12 @@
       grid-template-columns: 1fr 1fr;
       position: relative;
     }
-
     .hero-left {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 10rem 5rem 6rem 6rem;
     }
-
     .hero-eyebrow {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.68rem;
@@ -112,7 +108,6 @@
       color: var(--vermillion);
       margin-bottom: 2.5rem;
     }
-
     .hero-title {
       font-family: 'Noto Serif SC', serif;
       font-size: clamp(3rem, 5.5vw, 5.5rem);
@@ -122,9 +117,7 @@
       margin-bottom: 2.5rem;
       color: var(--ink);
     }
-
     .hero-title .accent { color: var(--gold); }
-
     .hero-desc {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.9rem;
@@ -135,12 +128,7 @@
       margin-bottom: 3.5rem;
       letter-spacing: 0.08em;
     }
-
-    .hero-actions {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
+    .hero-actions { display: flex; gap: 1.5rem; align-items: center; }
 
     .btn-primary {
       font-family: 'Noto Sans SC', sans-serif;
@@ -173,7 +161,6 @@
       overflow: hidden;
       background: var(--paper-deep);
     }
-
     .hero-img {
       width: 100%;
       height: 100%;
@@ -208,7 +195,6 @@
       margin-bottom: 4rem;
       padding: 0 2rem;
     }
-
     .works-intro-label {
       font-family: 'Noto Serif SC', serif;
       font-size: 2.2rem;
@@ -216,7 +202,6 @@
       line-height: 1.5;
       letter-spacing: 0.15em;
     }
-
     .works-intro-text {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.88rem;
@@ -232,15 +217,13 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
     }
-
     .work-item {
       position: relative;
       overflow: hidden;
       background: var(--paper-deep);
       cursor: pointer;
     }
-
-    .work-item:first-child { grid-column: span 2; }
+    .work-item.span2 { grid-column: span 2; }
 
     .work-img {
       width: 100%;
@@ -249,21 +232,18 @@
       display: block;
       transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s;
     }
-
-    .work-item:first-child .work-img { height: 420px; }
+    .work-item.span2 .work-img { height: 420px; }
     .work-item:hover .work-img { transform: scale(1.04); opacity: 0.82; }
 
     .work-caption {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       padding: 2rem 1.5rem 1.5rem;
-      background: linear-gradient(transparent, rgba(26,24,20,0.55));
+      background: linear-gradient(transparent, rgba(26,24,20,0.62));
       transform: translateY(100%);
       transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
     }
-
     .work-item:hover .work-caption { transform: translateY(0); }
-
     .work-caption h3 {
       font-family: 'Noto Serif SC', serif;
       font-size: 1.15rem;
@@ -272,13 +252,49 @@
       letter-spacing: 0.2em;
       margin-bottom: 0.4rem;
     }
-
     .work-caption p {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.7rem;
       font-weight: 300;
       letter-spacing: 0.2em;
       color: rgba(255,255,255,0.65);
+    }
+
+    /* 中国画描述卡片 */
+    .painting-desc-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3.5rem;
+      background: var(--paper-deep);
+    }
+    .painting-desc-card .card-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .painting-desc-card .card-text {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 2.4;
+      color: var(--mist);
+      letter-spacing: 0.08em;
+    }
+    .painting-desc-card .card-tag {
+      margin-top: 2rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 300;
+      letter-spacing: 0.45em;
+      color: var(--vermillion);
+      border: 1px solid var(--vermillion);
+      padding: 0.3rem 0.8rem;
+      display: inline-block;
     }
 
     .works-cta {
@@ -294,14 +310,12 @@
       grid-template-columns: 1fr 1fr;
       min-height: 420px;
     }
-
     .about-left {
       padding: 6rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-
     .about-label {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.65rem;
@@ -310,26 +324,23 @@
       color: var(--gold);
       margin-bottom: 2rem;
     }
-
     .about-title {
       font-family: 'Noto Serif SC', serif;
-      font-size: 2.2rem;
+      font-size: 2.8rem;
       font-weight: 300;
-      line-height: 1.6;
-      letter-spacing: 0.15em;
-      margin-bottom: 1.5rem;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      margin-bottom: 2rem;
     }
-
     .about-text {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.88rem;
       font-weight: 300;
       line-height: 2.2;
       color: rgba(245,241,235,0.6);
-      margin-bottom: 2.5rem;
       letter-spacing: 0.06em;
+      margin-bottom: 2.5rem;
     }
-
     .about-link {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.72rem;
@@ -338,7 +349,7 @@
       color: var(--gold);
       text-decoration: none;
       border-bottom: 1px solid rgba(184,150,74,0.4);
-      padding-bottom: 3px;
+      padding-bottom: 2px;
       align-self: flex-start;
       transition: border-color 0.3s;
     }
@@ -347,44 +358,40 @@
     .about-right {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      border-left: 1px solid rgba(245,241,235,0.08);
+      border-left: 1px solid rgba(245,241,235,0.1);
     }
-
     .honor-item {
-      padding: 2.5rem;
-      border-bottom: 1px solid rgba(245,241,235,0.06);
-      border-right: 1px solid rgba(245,241,235,0.06);
+      padding: 3rem;
+      border-bottom: 1px solid rgba(245,241,235,0.08);
+      border-right: 1px solid rgba(245,241,235,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
-
-    .honor-item:nth-child(even) { border-right: none; }
-    .honor-item:nth-last-child(-n+2) { border-bottom: none; }
-
     .honor-org {
-      font-family: 'Noto Sans SC', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      margin-bottom: 0.6rem;
-    }
-
-    .honor-role {
       font-family: 'Noto Serif SC', serif;
       font-size: 1rem;
-      font-weight: 400;
-      color: rgba(245,241,235,0.8);
-      line-height: 1.6;
+      font-weight: 300;
       letter-spacing: 0.1em;
+      color: var(--paper);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .honor-role {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--gold);
     }
 
     .contact-strip {
-      padding: 7rem 6rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8rem;
+      gap: 6rem;
+      padding: 7rem 6rem;
       align-items: start;
     }
-
     .contact-left h2 {
       font-family: 'Noto Serif SC', serif;
       font-size: 2.5rem;
@@ -393,7 +400,6 @@
       letter-spacing: 0.15em;
       margin-bottom: 1.5rem;
     }
-
     .contact-left p {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.88rem;
@@ -405,7 +411,6 @@
 
     .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
     .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
-
     .form-field label {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.65rem;
@@ -413,7 +418,6 @@
       letter-spacing: 0.3em;
       color: var(--mist);
     }
-
     .form-field input,
     .form-field textarea {
       font-family: 'Noto Serif SC', serif;
@@ -427,13 +431,10 @@
       outline: none;
       resize: none;
     }
-
     .form-field input:focus,
     .form-field textarea:focus { border-bottom-color: var(--ink); }
-
     .form-field input::placeholder,
     .form-field textarea::placeholder { color: var(--mist); }
-
     .form-submit {
       margin-top: 1rem;
       align-self: flex-start;
@@ -449,12 +450,7 @@
       transition: background 0.3s;
     }
     .form-submit:hover { background: var(--vermillion); }
-
-    .form-note {
-      font-size: 0.82rem;
-      color: var(--mist);
-      font-style: italic;
-    }
+    .form-note { font-size: 0.82rem; color: var(--mist); font-style: italic; }
 
     footer {
       border-top: 1px solid var(--stroke);
@@ -463,7 +459,6 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .footer-copy {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 0.72rem;
@@ -471,7 +466,6 @@
       letter-spacing: 0.12em;
       color: var(--mist);
     }
-
     .footer-logo {
       font-family: 'Noto Serif SC', serif;
       font-size: 0.9rem;
@@ -490,7 +484,7 @@
       .works { padding: 0 2rem 5rem; }
       .works-intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 0; }
       .works-grid { grid-template-columns: 1fr 1fr; }
-      .work-item:first-child { grid-column: span 2; }
+      .work-item.span2 { grid-column: span 2; }
       .about-strip { grid-template-columns: 1fr; }
       .about-left { padding: 4rem 2.5rem; }
       .about-right { grid-template-columns: 1fr 1fr; }
@@ -503,8 +497,9 @@
       .hero-left { padding: 7rem 1.5rem 3rem; }
       .works { padding: 0 1.5rem 4rem; }
       .works-grid { grid-template-columns: 1fr; }
-      .work-item:first-child { grid-column: span 1; }
-      .work-img, .work-item:first-child .work-img { height: 260px; }
+      .work-item.span2 { grid-column: span 1; }
+      .work-img, .work-item.span2 .work-img { height: 260px; }
+      .painting-desc-card { padding: 2rem 1.5rem; }
       .about-left { padding: 3rem 1.5rem; }
       .about-right { grid-template-columns: 1fr; }
       .contact-strip { padding: 4rem 1.5rem; }
@@ -515,7 +510,6 @@
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .hero-eyebrow { animation: fadeUp 0.8s ease both; }
     .hero-title { animation: fadeUp 0.8s 0.15s ease both; }
     .hero-desc { animation: fadeUp 0.8s 0.28s ease both; }
@@ -538,6 +532,7 @@
   <a class="nav-lang" href="index-en.html">English</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">中国书画艺术</p>
@@ -555,51 +550,124 @@
     </div>
   </div>
   <div class="hero-right">
-    <img class="hero-img" src="images/mmexport1730980049418.jpg" alt="金色扇面书法">
+    <img class="hero-img" src="images/绘画作品1-1.jpg" alt="志存高远 · 中国画">
   </div>
 </section>
 
+<!-- 中国画专辑 -->
 <div class="divider">
   <div class="divider-line"></div>
-  <span class="divider-text">精选作品</span>
+  <span class="divider-text">中国画专辑</span>
   <div class="divider-line"></div>
 </div>
 
 <section class="works">
   <div class="works-intro">
-    <h2 class="works-intro-label">扇面<br>书法系列</h2>
+    <h2 class="works-intro-label">中国画<br>专辑</h2>
     <p class="works-intro-text">
-      每一幅扇面作品，皆凝聚千年汉字之精髓。笔随心走，墨染纸香，古典意境与个人性灵在此交汇融合。
+      注重"形"的神似与"意"的神韵完美结合，以鹰寄情，以鹰抒情。通过鹰与石的对比呼应，展现坚韧不拔、勇往直前的精神。
     </p>
   </div>
 
   <div class="works-grid">
+    <div class="work-item span2">
+      <img class="work-img" src="images/绘画作品1-1.jpg" alt="志存高远">
+      <div class="work-caption">
+        <h3>志存高远</h3>
+        <p>中国画 · 花鸟</p>
+      </div>
+    </div>
+    <div class="painting-desc-card">
+      <p class="card-title">志存高远</p>
+      <p class="card-text">色彩上辅以淡彩，使画面既有传统水墨韵味，又不失现代生动感。笔墨间流淌着志存高远的精神气韵。</p>
+      <span class="card-tag">中国画 · 花鸟</span>
+    </div>
+  </div>
+
+  <div class="works-cta">
+    <a href="gallery.html" class="btn-ghost">查看完整作品集 →</a>
+  </div>
+</section>
+
+<!-- 书法系列 -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">书法系列</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="works" style="padding-top:0;">
+  <div class="works-intro">
+    <h2 class="works-intro-label">书法<br>系列</h2>
+    <p class="works-intro-text">
+      每一幅书法作品，皆凝聚千年汉字之精髓。笔随心走，墨染纸香，古典意境与个人性灵在此交汇融合。
+    </p>
+  </div>
+
+  <div class="works-grid">
+    <div class="work-item span2">
+      <img class="work-img" src="images/书法作品2-1.jpg" alt="天布祥和新景祥，地开鸿运耕康庄">
+      <div class="work-caption">
+        <h3>天布祥和新景祥，地开鸿运耕康庄</h3>
+        <p>书法 · 对联</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-4.jpg" alt="福禄寿喜">
+      <div class="work-caption">
+        <h3>福禄寿喜</h3>
+        <p>书法 · 吉祥题材</p>
+      </div>
+    </div>
+
     <div class="work-item">
       <img class="work-img" src="images/mmexport1730980049418.jpg" alt="积善养德">
       <div class="work-caption">
         <h3>积善养德</h3>
-        <p>楷书 · 金色扇面</p>
+        <p>书法 · 金色扇面</p>
       </div>
     </div>
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="书写系列">
+      <img class="work-img" src="images/mmexport1730980057374.jpg" alt="书为至宝">
       <div class="work-caption">
-        <h3>书写人生</h3>
-        <p>行书 · 青绿扇面</p>
+        <h3>书为至宝</h3>
+        <p>书法 · 青绿扇面</p>
       </div>
     </div>
     <div class="work-item">
       <img class="work-img" src="images/mmexport1730980062646.jpg" alt="厚德载福">
       <div class="work-caption">
         <h3>厚德载福</h3>
-        <p>楷书 · 紫色扇面</p>
+        <p>书法 · 紫色扇面</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-2.jpg" alt="花香庭草绿，书雅画堂幽">
+      <div class="work-caption">
+        <h3>花香庭草绿，书雅画堂幽</h3>
+        <p>书法 · 条幅</p>
       </div>
     </div>
     <div class="work-item">
-      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="银色扇面">
+      <img class="work-img" src="images/书法2-3.jpg" alt="佛·与佛有缘真福也">
       <div class="work-caption">
-        <h3>礼义勤俭和</h3>
-        <p>楷书 · 银色扇面</p>
+        <h3>佛 · 与佛有缘真福也</h3>
+        <p>书法 · 禅意题材</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/书法2-5.jpg" alt="佛光普照">
+      <div class="work-caption">
+        <h3>佛光普照</h3>
+        <p>书法 · 禅意题材</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <img class="work-img" src="images/mmexport1730980071299.jpg" alt="孝当先礼为上勤为本俭养德和为贵">
+      <div class="work-caption">
+        <h3>孝 · 礼 · 勤 · 俭 · 和</h3>
+        <p>书法 · 银色扇面</p>
       </div>
     </div>
   </div>
@@ -609,6 +677,7 @@
   </div>
 </section>
 
+<!-- ABOUT -->
 <section class="about-strip">
   <div class="about-left">
     <p class="about-label">艺术家简介</p>
@@ -638,6 +707,7 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact-strip">
   <div class="contact-left">
     <h2>欢迎<br>洽谈合作</h2>
