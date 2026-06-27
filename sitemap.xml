@@ -74,4 +74,23 @@
     <priority>0.5</priority>
   </url>
 
+
+  <url>
+    <loc>https://www.shuhua.homes/privacy-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/privacy.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/privacy.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
