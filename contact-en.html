@@ -55,6 +55,10 @@
     .form-submit{margin-top:1.5rem;align-self:flex-start;font-family:'EB Garamond',Georgia,serif;font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:white;background:var(--ink);border:none;padding:1rem 2.5rem;cursor:pointer;transition:background 0.3s;}
     .form-submit:hover{background:var(--vermillion);}
     .form-note{font-size:0.85rem;color:var(--mist);font-style:italic;min-height:1.4em;}
+    .form-note.success{color:#4a7c59;font-style:normal;}
+    .error-msg{font-size:0.75rem;color:var(--vermillion);margin-top:0.3rem;min-height:1em;letter-spacing:0.05em;}
+    .form-field input.invalid,.form-field textarea.invalid{border-bottom-color:var(--vermillion);}
+    .form-field input.valid,.form-field textarea.valid{border-bottom-color:#4a7c59;}
 
     footer{border-top:1px solid var(--stroke);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;}
     .footer-copy{font-size:0.75rem;letter-spacing:0.12em;color:var(--mist);}
@@ -96,20 +100,24 @@
   <div class="contact-right">
     <form class="contact-form" id="contactForm">
       <div class="form-field">
-        <label>Your Name</label>
-        <input type="text" name="name" placeholder="Full name" required>
+        <label for="f-name">Your Name</label>
+        <input type="text" id="f-name" name="name" placeholder="Full name" autocomplete="name">
+        <span class="error-msg" id="err-name"></span>
       </div>
       <div class="form-field">
-        <label>Email Address</label>
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label for="f-email">Email Address</label>
+        <input type="email" id="f-email" name="email" placeholder="your@email.com" autocomplete="email">
+        <span class="error-msg" id="err-email"></span>
       </div>
       <div class="form-field">
-        <label>Subject</label>
-        <input type="text" name="subject" placeholder="Exhibition / Acquisition / Other">
+        <label for="f-subject">Subject</label>
+        <input type="text" id="f-subject" name="subject" placeholder="Exhibition / Acquisition / Other">
+        <span class="error-msg" id="err-subject"></span>
       </div>
       <div class="form-field">
-        <label>Message</label>
-        <textarea name="message" rows="5" placeholder="Your inquiry…" required></textarea>
+        <label for="f-message">Message</label>
+        <textarea id="f-message" name="message" rows="5" placeholder="Your inquiry…"></textarea>
+        <span class="error-msg" id="err-message"></span>
       </div>
       <p class="form-note" id="formNote"></p>
       <button type="submit" class="form-submit">Send Message</button>
@@ -123,17 +131,68 @@
 </footer>
 
 <script>
+  const rules = {
+    name:    { min: 2,  msg: 'Please enter your name (at least 2 characters).' },
+    email:   { regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, msg: 'Please enter a valid email address.' },
+    message: { min: 10, msg: 'Please write a message (at least 10 characters).' }
+  };
+
+  function validate(field, value) {
+    if (field === 'email') return rules.email.regex.test(value) ? '' : rules.email.msg;
+    if (field === 'name')    return value.length >= rules.name.min    ? '' : rules.name.msg;
+    if (field === 'message') return value.length >= rules.message.min ? '' : rules.message.msg;
+    return '';
+  }
+
+  function applyState(input, errEl, error) {
+    if (error) {
+      input.classList.add('invalid'); input.classList.remove('valid');
+      errEl.textContent = error;
+    } else {
+      input.classList.remove('invalid'); input.classList.add('valid');
+      errEl.textContent = '';
+    }
+    return !error;
+  }
+
+  ['name','email','message'].forEach(function(field) {
+    const el = document.getElementById('f-' + field);
+    el.addEventListener('blur', function() {
+      applyState(el, document.getElementById('err-' + field), validate(field, el.value.trim()));
+    });
+    el.addEventListener('input', function() {
+      if (el.classList.contains('invalid'))
+        applyState(el, document.getElementById('err-' + field), validate(field, el.value.trim()));
+    });
+  });
+
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const name    = this.name.value.trim();
-    const email   = this.email.value.trim();
-    const subject = this.subject.value.trim() || 'Inquiry';
-    const msg     = this.message.value.trim();
-    const to      = atob('YWxleDgyMDI2OEBnbWFpbC5jb20=');
-    const subj    = encodeURIComponent('[Jin Mo Realm] ' + subject + ' — from ' + name);
-    const body    = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg);
+    const nameVal  = document.getElementById('f-name').value.trim();
+    const emailVal = document.getElementById('f-email').value.trim();
+    const subVal   = document.getElementById('f-subject').value.trim() || 'Inquiry';
+    const msgVal   = document.getElementById('f-message').value.trim();
+
+    const ok = [
+      applyState(document.getElementById('f-name'),    document.getElementById('err-name'),    validate('name',    nameVal)),
+      applyState(document.getElementById('f-email'),   document.getElementById('err-email'),   validate('email',   emailVal)),
+      applyState(document.getElementById('f-message'), document.getElementById('err-message'), validate('message', msgVal))
+    ].every(Boolean);
+
+    if (!ok) {
+      document.getElementById('formNote').textContent = 'Please correct the fields above.';
+      document.getElementById('formNote').className = 'form-note';
+      return;
+    }
+
+    const to   = atob('YWxleDgyMDI2OEBnbWFpbC5jb20=');
+    const subj = encodeURIComponent('[Jin Mo Realm] ' + subVal + ' — from ' + nameVal);
+    const body = encodeURIComponent('Name: ' + nameVal + '\nEmail: ' + emailVal + '\n\n' + msgVal);
     window.location.href = 'mailto:' + to + '?subject=' + subj + '&body=' + body;
-    document.getElementById('formNote').textContent = 'Opening your mail client…';
+
+    const note = document.getElementById('formNote');
+    note.textContent = 'Opening your mail client — thank you for reaching out.';
+    note.className = 'form-note success';
   });
 </script>
 </body>

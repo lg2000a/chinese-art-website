@@ -55,6 +55,10 @@
     .form-submit{margin-top:1.5rem;align-self:flex-start;font-family:'Noto Sans SC',sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.3em;color:white;background:var(--ink);border:none;padding:1rem 2.5rem;cursor:pointer;transition:background 0.3s;}
     .form-submit:hover{background:var(--vermillion);}
     .form-note{font-family:'Noto Sans SC',sans-serif;font-size:0.82rem;font-weight:300;color:var(--mist);font-style:italic;min-height:1.4em;}
+    .form-note.success{color:#4a7c59;font-style:normal;}
+    .error-msg{font-family:'Noto Sans SC',sans-serif;font-size:0.72rem;font-weight:300;color:var(--vermillion);margin-top:0.3rem;min-height:1em;}
+    .form-field input.invalid,.form-field textarea.invalid{border-bottom-color:var(--vermillion);}
+    .form-field input.valid,.form-field textarea.valid{border-bottom-color:#4a7c59;}
 
     footer{border-top:1px solid var(--stroke);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;}
     .footer-copy{font-family:'Noto Sans SC',sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.12em;color:var(--mist);}
@@ -96,20 +100,24 @@
   <div class="contact-right">
     <form class="contact-form" id="contactForm">
       <div class="form-field">
-        <label>您的姓名</label>
-        <input type="text" name="name" placeholder="请输入您的姓名" required>
+        <label for="f-name">您的姓名</label>
+        <input type="text" id="f-name" name="name" placeholder="请输入您的姓名" autocomplete="name">
+        <span class="error-msg" id="err-name"></span>
       </div>
       <div class="form-field">
-        <label>电子邮箱</label>
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label for="f-email">电子邮箱</label>
+        <input type="email" id="f-email" name="email" placeholder="your@email.com" autocomplete="email">
+        <span class="error-msg" id="err-email"></span>
       </div>
       <div class="form-field">
-        <label>咨询主题</label>
-        <input type="text" name="subject" placeholder="展览 / 收藏 / 合作 / 其他">
+        <label for="f-subject">咨询主题</label>
+        <input type="text" id="f-subject" name="subject" placeholder="展览 / 收藏 / 合作 / 其他">
+        <span class="error-msg" id="err-subject"></span>
       </div>
       <div class="form-field">
-        <label>留言内容</label>
-        <textarea name="message" rows="5" placeholder="请输入您的留言或合作意向…" required></textarea>
+        <label for="f-message">留言内容</label>
+        <textarea id="f-message" name="message" rows="5" placeholder="请输入您的留言或合作意向…"></textarea>
+        <span class="error-msg" id="err-message"></span>
       </div>
       <p class="form-note" id="formNote"></p>
       <button type="submit" class="form-submit">发送消息</button>
@@ -123,17 +131,69 @@
 </footer>
 
 <script>
+  const rules = {
+    name:    { min: 2,  msg: '请输入您的姓名（至少2个字符）。' },
+    email:   { regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, msg: '请输入有效的电子邮箱地址。' },
+    message: { min: 5,  msg: '请填写留言内容（至少5个字符）。' }
+  };
+
+  function validate(field, value) {
+    if (field === 'email')   return rules.email.regex.test(value) ? '' : rules.email.msg;
+    if (field === 'name')    return value.length >= rules.name.min    ? '' : rules.name.msg;
+    if (field === 'message') return value.length >= rules.message.min ? '' : rules.message.msg;
+    return '';
+  }
+
+  function applyState(input, errEl, error) {
+    if (error) {
+      input.classList.add('invalid'); input.classList.remove('valid');
+      errEl.textContent = error;
+    } else {
+      input.classList.remove('invalid'); input.classList.add('valid');
+      errEl.textContent = '';
+    }
+    return !error;
+  }
+
+  ['name','email','message'].forEach(function(field) {
+    const el = document.getElementById('f-' + field);
+    el.addEventListener('blur', function() {
+      applyState(el, document.getElementById('err-' + field), validate(field, el.value.trim()));
+    });
+    el.addEventListener('input', function() {
+      if (el.classList.contains('invalid'))
+        applyState(el, document.getElementById('err-' + field), validate(field, el.value.trim()));
+    });
+  });
+
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const name    = this.name.value.trim();
-    const email   = this.email.value.trim();
-    const subject = this.subject.value.trim() || '合作咨询';
-    const msg     = this.message.value.trim();
-    const to      = atob('YWxleDgyMDI2OEBnbWFpbC5jb20=');
-    const subj    = encodeURIComponent('【金墨境界】' + subject + ' — ' + name);
-    const body    = encodeURIComponent('姓名：' + name + '\n邮箱：' + email + '\n\n' + msg);
+    const nameVal  = document.getElementById('f-name').value.trim();
+    const emailVal = document.getElementById('f-email').value.trim();
+    const subVal   = document.getElementById('f-subject').value.trim() || '合作咨询';
+    const msgVal   = document.getElementById('f-message').value.trim();
+
+    const ok = [
+      applyState(document.getElementById('f-name'),    document.getElementById('err-name'),    validate('name',    nameVal)),
+      applyState(document.getElementById('f-email'),   document.getElementById('err-email'),   validate('email',   emailVal)),
+      applyState(document.getElementById('f-message'), document.getElementById('err-message'), validate('message', msgVal))
+    ].every(Boolean);
+
+    if (!ok) {
+      const note = document.getElementById('formNote');
+      note.textContent = '请检查上方标红的字段后重新提交。';
+      note.className = 'form-note';
+      return;
+    }
+
+    const to   = atob('YWxleDgyMDI2OEBnbWFpbC5jb20=');
+    const subj = encodeURIComponent('【金墨境界】' + subVal + ' — ' + nameVal);
+    const body = encodeURIComponent('姓名：' + nameVal + '\n邮箱：' + emailVal + '\n\n' + msgVal);
     window.location.href = 'mailto:' + to + '?subject=' + subj + '&body=' + body;
-    document.getElementById('formNote').textContent = '正在打开邮件客户端…';
+
+    const note = document.getElementById('formNote');
+    note.textContent = '正在打开邮件客户端，感谢您的留言。';
+    note.className = 'form-note success';
   });
 </script>
 </body>
