@@ -42,6 +42,23 @@
     .page-header-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem;}
     .page-header-desc{font-size:1rem;line-height:1.9;color:var(--mist);max-width:480px;}
 
+    .acquire-bar{display:flex;justify-content:space-between;align-items:center;gap:2rem;padding:1.8rem 6rem;background:var(--paper-deep);border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);flex-wrap:wrap;}
+    .acquire-steps{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .acquire-step{display:flex;flex-direction:column;gap:0.25rem;}
+    .step-num{font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--vermillion);}
+    .step-text{font-size:0.9rem;line-height:1.55;color:var(--ink);}
+    .step-text em{font-style:normal;border-bottom:1px solid var(--gold);padding-bottom:1px;}
+    .acquire-arrow{font-size:1rem;color:var(--mist);flex-shrink:0;}
+    .acquire-cta{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--vermillion);border:1px solid var(--vermillion);padding:0.65rem 1.5rem;text-decoration:none;white-space:nowrap;transition:all 0.3s;flex-shrink:0;}
+    .acquire-cta:hover{background:var(--vermillion);color:white;}
+
+    .commission-bar{padding:1.5rem 6rem;background:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .commission-text{color:var(--paper);}
+    .commission-text strong{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;letter-spacing:0.12em;display:block;margin-bottom:0.3rem;}
+    .commission-text span{font-size:0.88rem;color:rgba(245,241,235,0.6);line-height:1.8;}
+    .commission-cta{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:0.65rem 1.5rem;text-decoration:none;white-space:nowrap;transition:all 0.3s;flex-shrink:0;}
+    .commission-cta:hover{background:var(--gold);color:var(--ink);}
+
     .divider{display:flex;align-items:center;gap:2rem;padding:0 6rem;margin:2rem 0 4rem;}
     .divider-line{flex:1;height:1px;background:var(--stroke);}
     .divider-text{font-size:0.68rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--mist);white-space:nowrap;}
@@ -64,10 +81,15 @@
     .work-img{width:100%;height:340px;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s;}
     .work-item:hover .work-img{transform:scale(1.04);opacity:0.82;}
 
-    .work-caption{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(26,24,20,0.62));transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .work-caption{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(26,24,20,0.68));transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     .work-item:hover .work-caption{transform:translateY(0);}
     .work-caption h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:white;letter-spacing:0.04em;margin-bottom:0.4rem;line-height:1.4;}
     .work-caption p{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.62);}
+    .work-inquire{display:inline-block;margin-top:0.85rem;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.88);border:1px solid rgba(255,255,255,0.42);padding:0.35rem 0.85rem;text-decoration:none;transition:all 0.25s;}
+    .work-inquire:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.8);}
+
+    .card-inquire{display:inline-block;margin-top:2rem;font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:0.65rem 1.5rem;text-decoration:none;transition:all 0.3s;}
+    .card-inquire:hover{background:var(--ink);color:var(--paper);}
 
     footer{border-top:1px solid var(--stroke);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;}
     .footer-copy{font-size:0.75rem;letter-spacing:0.12em;color:var(--mist);}
@@ -77,6 +99,7 @@
       nav{padding:1.2rem 2rem;}
       .nav-links{gap:1.5rem;}
       .page-header{padding:8rem 2.5rem 3rem;}
+      .acquire-bar,.commission-bar{padding:1.5rem 2.5rem;flex-direction:column;align-items:flex-start;}
       .divider,.gallery{padding-left:2rem;padding-right:2rem;}
       .gallery-painting{grid-template-columns:1fr;}
       .gallery-painting .work-item .work-img{height:340px;}
@@ -88,6 +111,9 @@
     @media(max-width:600px){
       .nav-links{display:none;}
       .page-header{padding:7rem 1.5rem 2.5rem;}
+      .acquire-bar,.commission-bar{padding:1.5rem;}
+      .acquire-arrow{display:none;}
+      .acquire-steps{flex-direction:column;gap:1rem;}
       .divider,.gallery{padding-left:1.5rem;padding-right:1.5rem;}
       .gallery-row,.gallery-row-2{grid-template-columns:1fr;}
       .painting-desc-card{padding:2.5rem 1.5rem;}
@@ -113,6 +139,34 @@
   <p class="page-header-desc">Chinese painting and calligraphy series — where classical brushwork and contemporary spirit converge in every stroke.</p>
 </div>
 
+<div class="acquire-bar">
+  <div class="acquire-steps">
+    <div class="acquire-step">
+      <span class="step-num">01</span>
+      <span class="step-text">Browse &amp; choose a work</span>
+    </div>
+    <span class="acquire-arrow">→</span>
+    <div class="acquire-step">
+      <span class="step-num">02</span>
+      <span class="step-text">Hover &amp; click <em>Inquire</em> on any piece</span>
+    </div>
+    <span class="acquire-arrow">→</span>
+    <div class="acquire-step">
+      <span class="step-num">03</span>
+      <span class="step-text">Artist replies within 48 hours</span>
+    </div>
+  </div>
+  <a class="acquire-cta" href="mailto:alex820268@gmail.com?subject=General%20Inquiry%20%E2%80%94%20Jin%20Mo%20Realm">Send General Inquiry</a>
+</div>
+
+<div class="commission-bar">
+  <div class="commission-text">
+    <strong>Custom Commission</strong>
+    <span>Specify size, subject &amp; script style — the artist creates exclusively for you &nbsp;·&nbsp; WeChat: 15222256002</span>
+  </div>
+  <a class="commission-cta" href="mailto:alex820268@gmail.com?subject=Custom%20Commission%20Inquiry%20%E2%80%94%20Jin%20Mo%20Realm">Commission a Work</a>
+</div>
+
 <!-- CHINESE PAINTING -->
 <div class="divider">
   <div class="divider-line"></div>
@@ -127,12 +181,14 @@
       <div class="work-caption">
         <h3>Soaring Ambition</h3>
         <p>Chinese Painting · Bird &amp; Flower</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Soaring%20Ambition">Inquire</a>
       </div>
     </div>
     <div class="painting-desc-card">
       <p class="card-eyebrow">Chinese Painting · Bird &amp; Flower</p>
       <p class="card-title">Soaring Ambition</p>
       <p class="card-text">This painting emphasizes the harmony between visual likeness and spiritual expression. Through the image of the eagle, the artist conveys aspiration, strength, and emotion. The contrast between the eagle and the rock reflects resilience, determination, and the courage to move forward.</p>
+      <a class="card-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Soaring%20Ambition">Inquire About This Work</a>
     </div>
   </div>
 </section>
@@ -152,6 +208,7 @@
       <div class="work-caption">
         <h3>Heaven Spreads Harmony · Earth Opens Fortune</h3>
         <p>Calligraphy · Couplet</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Heaven%20Spreads%20Harmony">Inquire</a>
       </div>
     </div>
     <div class="work-item">
@@ -159,6 +216,7 @@
       <div class="work-caption">
         <h3>Blessing, Prosperity, Longevity &amp; Joy</h3>
         <p>Calligraphy · Auspicious</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Blessing%2C%20Prosperity%2C%20Longevity%20%26%20Joy">Inquire</a>
       </div>
     </div>
   </div>
@@ -169,6 +227,7 @@
       <div class="work-caption">
         <h3>Cultivating Virtue Through Good Deeds</h3>
         <p>Calligraphy · Golden Fan</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Cultivating%20Virtue%20Through%20Good%20Deeds">Inquire</a>
       </div>
     </div>
     <div class="work-item">
@@ -176,6 +235,7 @@
       <div class="work-caption">
         <h3>Books Are Treasures</h3>
         <p>Calligraphy · Celadon Fan</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Books%20Are%20Treasures">Inquire</a>
       </div>
     </div>
     <div class="work-item">
@@ -183,6 +243,7 @@
       <div class="work-caption">
         <h3>Great Virtue Brings Blessings</h3>
         <p>Calligraphy · Lavender Fan</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Great%20Virtue%20Brings%20Blessings">Inquire</a>
       </div>
     </div>
   </div>
@@ -193,6 +254,7 @@
       <div class="work-caption">
         <h3>Fragrant Flowers &amp; Quiet Art Hall</h3>
         <p>Calligraphy · Scroll</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Fragrant%20Flowers%20%26%20Quiet%20Art%20Hall">Inquire</a>
       </div>
     </div>
     <div class="work-item">
@@ -200,6 +262,7 @@
       <div class="work-caption">
         <h3>A True Blessing — Affinity with Buddha</h3>
         <p>Calligraphy · Zen</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20A%20True%20Blessing%20%E2%80%94%20Affinity%20with%20Buddha">Inquire</a>
       </div>
     </div>
     <div class="work-item">
@@ -207,6 +270,7 @@
       <div class="work-caption">
         <h3>Buddha's Light Shines Everywhere</h3>
         <p>Calligraphy · Zen</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Buddha%27s%20Light%20Shines%20Everywhere">Inquire</a>
       </div>
     </div>
     <div class="work-item">
@@ -214,6 +278,7 @@
       <div class="work-caption">
         <h3>Filial Piety · Courtesy · Diligence · Frugality · Harmony</h3>
         <p>Calligraphy · Silver Fan</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=Inquiry%20%E2%80%94%20Filial%20Piety%20%C2%B7%20Courtesy%20%C2%B7%20Diligence%20%C2%B7%20Frugality%20%C2%B7%20Harmony">Inquire</a>
       </div>
     </div>
   </div>

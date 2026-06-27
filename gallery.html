@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>作品集 — 金墨境界</title>
   <meta name="description" content="金墨境界作品集：中国画、书法系列全览。包含花鸟画、楷书、行书等多种题材，展示传统书画艺术之美。">
-    <meta name="description" content="金墨境界作品集，包含花鸟水墨画、经典书法长卷、扇面及禅意作品。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Jin Mo Realm 金墨境界">
   <meta property="og:url" content="https://www.shuhua.homes/gallery.html">
@@ -43,13 +42,29 @@
     .page-header-title{font-family:'Noto Serif SC',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.25;letter-spacing:0.15em;margin-bottom:1.5rem;}
     .page-header-desc{font-family:'Noto Sans SC',sans-serif;font-size:0.88rem;font-weight:300;line-height:2.2;color:var(--mist);max-width:480px;letter-spacing:0.06em;}
 
+    .acquire-bar{display:flex;justify-content:space-between;align-items:center;gap:2rem;padding:1.8rem 6rem;background:var(--paper-deep);border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);flex-wrap:wrap;}
+    .acquire-steps{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .acquire-step{display:flex;flex-direction:column;gap:0.25rem;}
+    .step-num{font-family:'Noto Sans SC',sans-serif;font-size:0.6rem;font-weight:300;letter-spacing:0.4em;color:var(--vermillion);}
+    .step-text{font-family:'Noto Sans SC',sans-serif;font-size:0.85rem;font-weight:300;line-height:1.7;color:var(--ink);letter-spacing:0.05em;}
+    .step-text em{font-style:normal;border-bottom:1px solid var(--gold);padding-bottom:1px;}
+    .acquire-arrow{font-size:1rem;color:var(--mist);flex-shrink:0;}
+    .acquire-cta{font-family:'Noto Sans SC',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;color:var(--vermillion);border:1px solid var(--vermillion);padding:0.65rem 1.5rem;text-decoration:none;white-space:nowrap;transition:all 0.3s;flex-shrink:0;}
+    .acquire-cta:hover{background:var(--vermillion);color:white;}
+
+    .commission-bar{padding:1.5rem 6rem;background:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;}
+    .commission-text{color:var(--paper);}
+    .commission-text strong{font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:400;letter-spacing:0.15em;display:block;margin-bottom:0.3rem;}
+    .commission-text span{font-family:'Noto Sans SC',sans-serif;font-size:0.78rem;font-weight:300;color:rgba(245,241,235,0.6);letter-spacing:0.06em;line-height:1.8;}
+    .commission-cta{font-family:'Noto Sans SC',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;color:var(--gold);border:1px solid var(--gold);padding:0.65rem 1.5rem;text-decoration:none;white-space:nowrap;transition:all 0.3s;flex-shrink:0;}
+    .commission-cta:hover{background:var(--gold);color:var(--ink);}
+
     .divider{display:flex;align-items:center;gap:2rem;padding:0 6rem;margin:2rem 0 4rem;}
     .divider-line{flex:1;height:1px;background:var(--stroke);}
     .divider-text{font-family:'Noto Sans SC',sans-serif;font-size:0.68rem;font-weight:300;letter-spacing:0.45em;color:var(--mist);white-space:nowrap;}
 
     .gallery{padding:0 4rem 8rem;}
 
-    /* 中国画专辑：featured大图 + 描述卡 */
     .gallery-painting{display:grid;grid-template-columns:1.5fr 1fr;gap:2px;margin-bottom:2px;}
     .gallery-painting .work-item .work-img{height:520px;}
     .painting-desc-card{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:4rem;background:var(--paper-deep);}
@@ -57,7 +72,6 @@
     .painting-desc-card .card-title{font-family:'Noto Serif SC',serif;font-size:2.2rem;font-weight:300;letter-spacing:0.2em;color:var(--ink);margin-bottom:1.5rem;line-height:1.4;}
     .painting-desc-card .card-text{font-family:'Noto Sans SC',sans-serif;font-size:0.82rem;font-weight:300;line-height:2.4;color:var(--mist);letter-spacing:0.06em;}
 
-    /* 书法系列：feature+row布局 */
     .gallery-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:2px;margin-bottom:2px;}
     .gallery-feature .work-item:first-child .work-img{height:500px;}
     .gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;}
@@ -67,10 +81,15 @@
     .work-img{width:100%;height:340px;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s;}
     .work-item:hover .work-img{transform:scale(1.04);opacity:0.82;}
 
-    .work-caption{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(26,24,20,0.62));transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .work-caption{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(26,24,20,0.68));transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     .work-item:hover .work-caption{transform:translateY(0);}
     .work-caption h3{font-family:'Noto Serif SC',serif;font-size:1.15rem;font-weight:400;color:white;letter-spacing:0.2em;margin-bottom:0.4rem;line-height:1.5;}
     .work-caption p{font-family:'Noto Sans SC',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.65);}
+    .work-inquire{display:inline-block;margin-top:0.85rem;font-family:'Noto Sans SC',sans-serif;font-size:0.62rem;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.88);border:1px solid rgba(255,255,255,0.42);padding:0.35rem 0.85rem;text-decoration:none;transition:all 0.25s;}
+    .work-inquire:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.8);}
+
+    .card-inquire{display:inline-block;margin-top:2rem;font-family:'Noto Sans SC',sans-serif;font-size:0.7rem;font-weight:300;letter-spacing:0.2em;color:var(--ink);border:1px solid var(--ink);padding:0.65rem 1.5rem;text-decoration:none;transition:all 0.3s;}
+    .card-inquire:hover{background:var(--ink);color:var(--paper);}
 
     footer{border-top:1px solid var(--stroke);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;}
     .footer-copy{font-family:'Noto Sans SC',sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.12em;color:var(--mist);}
@@ -80,6 +99,7 @@
       nav{padding:1.2rem 2rem;}
       .nav-links{gap:1.5rem;}
       .page-header{padding:8rem 2.5rem 3rem;}
+      .acquire-bar,.commission-bar{padding:1.5rem 2.5rem;flex-direction:column;align-items:flex-start;}
       .divider,.gallery{padding-left:2rem;padding-right:2rem;}
       .gallery-painting{grid-template-columns:1fr;}
       .gallery-painting .work-item .work-img{height:340px;}
@@ -91,6 +111,9 @@
     @media(max-width:600px){
       .nav-links{display:none;}
       .page-header{padding:7rem 1.5rem 2.5rem;}
+      .acquire-bar,.commission-bar{padding:1.5rem;}
+      .acquire-arrow{display:none;}
+      .acquire-steps{flex-direction:column;gap:1rem;}
       .divider,.gallery{padding-left:1.5rem;padding-right:1.5rem;}
       .gallery-row,.gallery-row-2{grid-template-columns:1fr;}
       .painting-desc-card{padding:2.5rem 1.5rem;}
@@ -116,6 +139,34 @@
   <p class="page-header-desc">中国画与书法系列，笔墨之间承载传统与当代的交汇，每一幅作品皆是心境与文化的凝练表达。</p>
 </div>
 
+<div class="acquire-bar">
+  <div class="acquire-steps">
+    <div class="acquire-step">
+      <span class="step-num">01</span>
+      <span class="step-text">浏览作品，选中心仪之作</span>
+    </div>
+    <span class="acquire-arrow">→</span>
+    <div class="acquire-step">
+      <span class="step-num">02</span>
+      <span class="step-text">悬停后点击「<em>询价</em>」按钮</span>
+    </div>
+    <span class="acquire-arrow">→</span>
+    <div class="acquire-step">
+      <span class="step-num">03</span>
+      <span class="step-text">艺术家 48 小时内回复报价</span>
+    </div>
+  </div>
+  <a class="acquire-cta" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20金墨境界">发送询价邮件</a>
+</div>
+
+<div class="commission-bar">
+  <div class="commission-text">
+    <strong>按需定制</strong>
+    <span>提供尺幅、题材、书体等需求，由艺术家为您专属创作 &nbsp;·&nbsp; 微信：15222256002</span>
+  </div>
+  <a class="commission-cta" href="mailto:alex820268@gmail.com?subject=定制作品咨询%20%E2%80%94%20金墨境界">发起定制咨询</a>
+</div>
+
 <!-- 中国画专辑 -->
 <div class="divider">
   <div class="divider-line"></div>
@@ -130,12 +181,14 @@
       <div class="work-caption">
         <h3>志存高远</h3>
         <p>中国画 · 花鸟</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20志存高远">询价</a>
       </div>
     </div>
     <div class="painting-desc-card">
       <p class="card-eyebrow">中国画 · 花鸟</p>
       <p class="card-title">志存高远</p>
       <p class="card-text">注重"形"的神似与"意"的神韵完美结合，以鹰寄情，以鹰抒情。色彩上辅以淡彩或重彩，使画面既有传统水墨韵味，又不失现代生动感。通过鹰与石的对比呼应，展现坚韧不拔、勇往直前的精神。</p>
+      <a class="card-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20志存高远">询价此作品</a>
     </div>
   </div>
 </section>
@@ -149,13 +202,13 @@
 
 <section class="gallery" style="padding-top:0;">
 
-  <!-- 对联大图 -->
   <div class="gallery-feature">
     <div class="work-item">
       <img class="work-img" src="images/calligraphy-heaven-harmony.jpg" alt="天布祥和新景祥，地开鸿运耕康庄">
       <div class="work-caption">
         <h3>天布祥和新景祥，地开鸿运耕康庄</h3>
         <p>书法 · 对联</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20天布祥和">询价</a>
       </div>
     </div>
     <div class="work-item">
@@ -163,17 +216,18 @@
       <div class="work-caption">
         <h3>福禄寿喜</h3>
         <p>书法 · 吉祥题材</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20福禄寿喜">询价</a>
       </div>
     </div>
   </div>
 
-  <!-- 扇面三件 -->
   <div class="gallery-row">
     <div class="work-item">
       <img class="work-img" src="images/calligraphy-cultivating-virtue.jpg" alt="积善养德">
       <div class="work-caption">
         <h3>积善养德</h3>
         <p>书法 · 金色扇面</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20积善养德">询价</a>
       </div>
     </div>
     <div class="work-item">
@@ -181,6 +235,7 @@
       <div class="work-caption">
         <h3>书为至宝</h3>
         <p>书法 · 青绿扇面</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20书为至宝">询价</a>
       </div>
     </div>
     <div class="work-item">
@@ -188,17 +243,18 @@
       <div class="work-caption">
         <h3>厚德载福</h3>
         <p>书法 · 紫色扇面</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20厚德载福">询价</a>
       </div>
     </div>
   </div>
 
-  <!-- 其余四件 -->
   <div class="gallery-row-2">
     <div class="work-item">
       <img class="work-img" src="images/calligraphy-fragrant-flowers.jpg" alt="花香庭草绿，书雅画堂幽">
       <div class="work-caption">
         <h3>花香庭草绿，书雅画堂幽</h3>
         <p>书法 · 条幅</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20花香庭草绿">询价</a>
       </div>
     </div>
     <div class="work-item">
@@ -206,6 +262,7 @@
       <div class="work-caption">
         <h3>佛 · 与佛有缘真福也</h3>
         <p>书法 · 禅意题材</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20与佛有缘">询价</a>
       </div>
     </div>
     <div class="work-item">
@@ -213,6 +270,7 @@
       <div class="work-caption">
         <h3>佛光普照</h3>
         <p>书法 · 禅意题材</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20佛光普照">询价</a>
       </div>
     </div>
     <div class="work-item">
@@ -220,6 +278,7 @@
       <div class="work-caption">
         <h3>孝 · 礼 · 勤 · 俭 · 和</h3>
         <p>书法 · 银色扇面</p>
+        <a class="work-inquire" href="mailto:alex820268@gmail.com?subject=作品询价%20%E2%80%94%20孝礼勤俭和">询价</a>
       </div>
     </div>
   </div>
