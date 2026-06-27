@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.shuhua.homes/index-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/index-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/index-zh.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/index-zh.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/index-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/index-zh.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/gallery-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/gallery-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/gallery.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/gallery.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/gallery-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/gallery.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/about-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/about-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/about.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/about-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/about.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/contact-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/contact-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/contact.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.shuhua.homes/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://www.shuhua.homes/contact-en.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.shuhua.homes/contact.html"/>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
